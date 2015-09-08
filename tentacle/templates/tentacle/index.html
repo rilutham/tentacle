@@ -1,9 +1,0 @@
-{% if activity_list %}
-    <ul>
-    {% for activity in activity_list %}
-    <li><a href="{% url 'tentacle_ns:detail' activity.id %}">{{ activity.activity_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p> No activities are avalilable.</p>
-{% endif %}

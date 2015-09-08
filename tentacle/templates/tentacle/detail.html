@@ -1,4 +1,10 @@
-<h1>{{ activity.activity_name }}</h1>
+{% extends "tentacle/base.html" %}
+
+{% block activity_header %}
+    {{ activity.activity_name }}
+{% endblock %}
+
+{% block content %}
 <font size="40">{{ activity.total_hour }} hours</font>
 <p>You started {{ activity.activity_name }} in {{ activity.created_at}}.</p>
 
@@ -30,3 +36,4 @@
     {{ increase_hour_form }}
     <input type="submit" name="inc_hour_btn" value="+" />
 </form>
+{% endblock %}
