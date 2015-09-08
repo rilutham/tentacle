@@ -1,0 +1,32 @@
+<h1>{{ activity.activity_name }}</h1>
+<font size="40">{{ activity.total_hour }} hours</font>
+<p>You started {{ activity.activity_name }} in {{ activity.created_at}}.</p>
+
+{% with inc_status="added" dec_status="sub"%}
+{% if activity.latest_hour > 0 %}
+	<p>Recently, you {{ inc_status }} {{activity.latest_hour}} hours in {{ activity.updated_at}}.</p>
+{% else %}
+	<p>Recently, you {{ dec_status }} {% widthratio activity.latest_hour 1 -1 %} hours in {{ activity.updated_at}}.</p>
+{% endif %}
+{% endwith %}
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% if decrease_hour_form.errors %}
+    {{ decrease_hour_form.errors|pluralize }}
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ decrease_hour_form }}
+    <input type="submit" name="dec_hour_btn" value="-" />
+</form>
+
+{% if increase_hour_form.errors %}
+    {{ increase_hour_form.errors|pluralize }}
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ increase_hour_form }}
+    <input type="submit" name="inc_hour_btn" value="+" />
+</form>
