@@ -1,0 +1,11 @@
+[
+  {
+    "model": "tentacle.activity",
+    "pk": 0,
+    "fields": {
+      "activity_name": "Main activity",
+      "description": "Main activity",
+      "parent_activity_id": 0
+    }
+  }
+]
