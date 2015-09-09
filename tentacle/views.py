@@ -4,8 +4,10 @@ from .models import Activity
 from .forms import IncreaseHourForm, DecreaseHourForm
 
 def index(request):
-    activity_list = Activity.objects.order_by('-total_hour')
-    return render(request, 'tentacle/base.html', {'activity_list': activity_list})
+    activities = Activity.objects.order_by('-total_hour')
+    activity_list = activities.filter(parent_activity_id = 0)
+    top_level_activity = activity_list.exclude(id=0)
+    return render(request, 'tentacle/base.html', {'top_level_activity': top_level_activity})
 
 def detail(request, activity_id):
     activity = get_object_or_404(Activity, pk=activity_id)
@@ -32,9 +34,11 @@ def detail(request, activity_id):
         increase_hour_form = IncreaseHourForm()
         decrease_hour_form = DecreaseHourForm()
 
-    activity_list = Activity.objects.order_by('-total_hour')
+    activities = Activity.objects.order_by('-total_hour')
+    activity_list = activities.filter(parent_activity_id = 0)
+    top_level_activity = activity_list.exclude(id=0)
 
     return render(request, 'tentacle/detail.html', {'activity': activity, \
     	'increase_hour_form': increase_hour_form, 'decrease_hour_form': decrease_hour_form, \
-    	'activity_list': activity_list})
+    	'top_level_activity': top_level_activity})
 

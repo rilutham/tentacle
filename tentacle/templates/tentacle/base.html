@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Tentacle <small>pre-alpha</small></a>
+                <a class="navbar-brand" href="/">Tentacle <small>pre-alpha</small></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -261,14 +261,22 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        {% if activity_list %}
-                            {% for activity in activity_list %}
+                        <!-- List of activities -->
+                        {% if top_level_activity %}
+                            {% for activity in top_level_activity %}
                             <li>
-                                <a href="{% url 'tentacle_ns:detail' activity.id %}">{{ activity.activity_name }}</a>
+                              <a href="{% url 'tentacle_ns:detail' activity.id %}">{{ activity.activity_name }}</a>
+                              <ul class="nav nav-second-level">
+                                {% for child_activity in activity.activity_set.all %}
+                                  <li>
+                                    <a href="{% url 'tentacle_ns:detail' child_activity.id %}">{{ child_activity.activity_name }}</a>
+                                  </li>  
+                                {% endfor %}
+                              </ul>  
                             </li>
                             {% endfor %}
                         {% else %}
-                            <p> No activities are avalilable.</p>
+                            <li>No activities are avalilable.</li>
                         {% endif %}
                         
                         <li>
