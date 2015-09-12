@@ -6,34 +6,43 @@
 
 {% block content %}
 <font size="40">{{ activity.total_hour }} hours</font>
-<p>You started {{ activity.activity_name }} in {{ activity.created_at}}.</p>
+<p><small>You started {{ activity.activity_name }} in {{ activity.created_at}}.</small></p>
 
 {% with inc_status="added" dec_status="sub"%}
 {% if activity.latest_hour > 0 %}
-	<p>Recently, you {{ inc_status }} {{activity.latest_hour}} hours in {{ activity.updated_at}}.</p>
+	<p><small>Recently, you {{ inc_status }} {{activity.latest_hour}} hours in {{ activity.updated_at}}.</small></p>
 {% else %}
-	<p>Recently, you {{ dec_status }} {% widthratio activity.latest_hour 1 -1 %} hours in {{ activity.updated_at}}.</p>
+	<p><small>Recently, you {{ dec_status }} {% widthratio activity.latest_hour 1 -1 %} hours in {{ activity.updated_at}}.</small></p>
 {% endif %}
 {% endwith %}
 
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{% if decrease_hour_form.errors %}
-    {{ decrease_hour_form.errors|pluralize }}
-{% endif %}
-<form action="" method="post">
-    {% csrf_token %}
-    {{ decrease_hour_form }}
-    <input type="submit" name="dec_hour_btn" value="-" />
-</form>
-
 {% if increase_hour_form.errors %}
     {{ increase_hour_form.errors|pluralize }}
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
-    {{ increase_hour_form }}
-    <input type="submit" name="inc_hour_btn" value="+" />
+    <div class="input-group">
+        {% for choice in increase_hour_form.choice_field.field.choices %}
+        <label class="radio-inline">
+            <input type="radio" name="choice_field" value="{{ choice.0 }}">
+            <label for="">{{choice.1}}</label>
+        </label>
+        {% endfor %}
+    </div>
+    <br>
+    <div class="input-group">
+        <input type="text" class="form-control" name="{{ increase_hour_form.num.name }}" placeholder="Number of hours">
+        <span class="input-group-addon">hour</span>
+    </div>
+    <br>
+    <div class="form-group">
+        <textarea rows="3" class="form-control" id="postalAddress" placeholder="Add note (optional)"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" name="inc_hour_btn" value="Submit" class="btn btn-default" />
+    </div>
 </form>
 {% endblock %}
