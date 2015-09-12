@@ -6,7 +6,7 @@ class Activity(models.Model):
     description = models.CharField(max_length=200)
     latest_hour = models.IntegerField(default=0)
     total_hour = models.BigIntegerField(default=0)
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField()
     updated_at = models.DateTimeField(default=timezone.now)
     parent_activity = models.ForeignKey('self', default=0)
 
@@ -20,3 +20,8 @@ class Activity(models.Model):
     def get_last_update(self):
     	self.updated_at = timezone.now()
     	return self.updated_at
+
+class Note(models.Model):
+    note = models.CharField(max_length=140)
+    created_at = models.DateTimeField(default=timezone.now)
+    activity = models.ForeignKey(Activity)

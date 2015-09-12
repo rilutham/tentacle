@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-from .models import Activity
+from .models import Activity, Note
 from .forms import IncreaseHourForm
+from django.utils import timezone
 
 def index(request):
     activities = Activity.objects.order_by('-total_hour')
@@ -26,6 +27,9 @@ def detail(request, activity_id):
                 activity.update_total_hour()
                 activity.get_last_update()
                 activity.save()
+                note = increase_hour_form.cleaned_data['note']
+                n = Note(note=note, activity_id=activity_id)
+                n.save()
                 return HttpResponseRedirect('/' + activity_id)
     else:
         increase_hour_form = IncreaseHourForm()
