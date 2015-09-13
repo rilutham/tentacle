@@ -158,28 +158,7 @@
                                 <ul class="dropdown-menu slidedown">
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                            <i class="fa fa-refresh fa-fw"></i> Add activity
                                         </a>
                                     </li>
                                 </ul>
@@ -352,28 +331,13 @@
                                 <ul class="dropdown-menu slidedown">
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
+                                            <i class="fa fa-refresh fa-fw"></i> Edit actvity
                                         </a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                        <a href="{% url 'tentacle_ns:delete' activity_id=activity.id %}">
+                                            <i class="fa fa-sign-out fa-fw"></i> Delete Activity
                                         </a>
                                     </li>
                                 </ul>

@@ -1,0 +1,21 @@
+                            <div class="list-group">
+                                <ul class="nav"> 
+                                <!-- List of activities -->
+                                {% if top_level_activity %}
+                                    {% for activity in top_level_activity %}
+                                    <li>
+                                      <a href="{% url 'tentacle_ns:detail' activity.id %}" class="list-group-item">{{ activity.activity_name }}</a>
+                                      <ul class="nav nav-second-level">
+                                        {% for child_activity in activity.activity_set.all %}
+                                          <li>
+                                            <a href="{% url 'tentacle_ns:detail' child_activity.id %}" class="list-group-item">{{ child_activity.activity_name }}</a>
+                                          </li>  
+                                        {% endfor %}
+                                      </ul>  
+                                    </li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>No activities are avalilable.</li>
+                                {% endif %}
+                                </ul>
+                            </div>
