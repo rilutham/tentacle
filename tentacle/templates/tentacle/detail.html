@@ -26,11 +26,46 @@
     </form>
 {% endblock%}
 
-{% block activity_header %}
-    {{ activity.activity_name }}
-{% endblock %}
 
 {% block content %}
+<div class="col-md-12 mb">
+    <div class="darkblue-panel pn">
+        <div class="darkblue-header">
+            <h4>{{ activity.activity_name }}</h4>
+        </div>
+        <p><em>"{{ activity.description}}"</em></p>
+        <font size="20">{{ activity.total_hour }} <span>hours</span></font>
+        <p>since {{ activity.created_at}}</p>
+        <div class="progress progress-striped active" style="margin:15px;">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                <span class="">40% Complete (success)</span>
+            </div>
+        </div>
+        <div class="chart mt">
+            <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
+        </div>
+        {% with inc_status="added" dec_status="sub"%}
+        {% if activity.latest_hour > 0 %}
+        <p class="mt">Recently, you {{ inc_status }} {{activity.latest_hour}} hours
+        <br>in {{ activity.updated_at}}</p>
+        {% else %}
+        <p class="mt">Recently, you {{ inc_status }} {{activity.latest_hour}} hours
+        <br>in {{ activity.updated_at}}</p>
+        {% endif %}
+        {% endwith %}
+        
+        <footer>
+            <div class="pull-left">
+                <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+            </div>
+            <div class="pull-right">
+                <h5>60% Used</h5>
+            </div>
+        </footer>
+    </div><!-- /darkblue panel -->
+</div><!-- /col-md-4 -->
+{% endblock %}
+
 <font size="40">{{ activity.total_hour }} hours</font>
 <p><small>You started {{ activity.activity_name }} in {{ activity.created_at}}.</small></p>
 
@@ -71,4 +106,3 @@
         <input type="submit" name="inc_hour_btn" value="Submit" class="btn btn-default" />
     </div>
 </form>
-{% endblock %}
