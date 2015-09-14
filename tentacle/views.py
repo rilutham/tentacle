@@ -35,7 +35,6 @@ def detail(request, activity_id):
                     num = -int(increase_hour_form.cleaned_data['num'])
                 activity.latest_hour = num
                 activity.update_total_hour()
-                activity.get_last_update()
                 activity.save()
                 note = increase_hour_form.cleaned_data['note']
                 n = Note(note=note, activity_id=activity_id)
