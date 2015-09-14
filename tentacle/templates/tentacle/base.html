@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'tentacle/lineicons/style.css'%}">
     <!-- jQuery Gritter -->
     <link href="{% static 'tentacle/gritter/css/jquery.gritter.css' %}" rel="stylesheet" media="screen">
+
+    <link href="{% static 'tentacle/VerticalTimeline/css/component.css' %}" rel="stylesheet" media="screen">
 </head>
 
 <body>
@@ -82,93 +84,68 @@
               </div>
               
               <div class="col-lg-6 main-chart">
-              
-                <div class="row mtbox">
-                    <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                        <div class="box1">
-                            <span class="li_heart"></span>
-                            <h3>933</h3>
-                        </div>
-                            <p>933 People liked your page the last 24hs. Whoohoo!</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_cloud"></span>
-                            <h3>+48</h3>
-                        </div>
-                            <p>48 New files were added in your cloud storage.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_stack"></span>
-                            <h3>23</h3>
-                        </div>
-                            <p>You have 23 unread messages in your inbox.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_news"></span>
-                            <h3>+10</h3>
-                        </div>
-                            <p>More than 10 news were added in your reader.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                            <span class="li_data"></span>
-                            <h3>OK!</h3>
-                        </div>
-                            <p>Your server is working perfectly. Relax & enjoy.</p>
-                    </div>
-                
-                </div><!-- /row mt -->  
-              
-                  
-                  
                 
                 <div class="row mt">
-                  <!--CUSTOM CHART START -->
-                  <div class="border-head">
-                      <h3>VISITS</h3>
-                  </div>
-                  <div class="custom-bar-chart">
-                      <ul class="y-axis">
-                          <li><span>10.000</span></li>
-                          <li><span>8.000</span></li>
-                          <li><span>6.000</span></li>
-                          <li><span>4.000</span></li>
-                          <li><span>2.000</span></li>
-                          <li><span>0</span></li>
-                      </ul>
-                      <div class="bar">
-                          <div class="title">JAN</div>
-                          <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
-                      </div>
-                      <div class="bar ">
-                          <div class="title">FEB</div>
-                          <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
-                      </div>
-                      <div class="bar ">
-                          <div class="title">MAR</div>
-                          <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
-                      </div>
-                      <div class="bar ">
-                          <div class="title">APR</div>
-                          <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
-                      </div>
-                      <div class="bar">
-                          <div class="title">MAY</div>
-                          <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
-                      </div>
-                      <div class="bar ">
-                          <div class="title">JUN</div>
-                          <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
-                      </div>
-                      <div class="bar">
-                          <div class="title">JUL</div>
-                          <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
-                      </div>
-                  </div>
-                  <!--custom chart end-->
+                    <div style="margin:15px;">
+                        <ul class="cbp_tmtimeline">
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>Ricebean black-eyed pea</h2>
+                                    <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Pea sprouts wattle seed rutabaga okra yarrow cress avocado grape radish bush tomato ricebean black-eyed pea maize eggplant. Cabbage lentil cucumber chickpea sorrel gram garbanzo plantain lotus root bok choy squash cress potato summer purslane salsify fennel horseradish dulse. Winter purslane garbanzo artichoke broccoli lentil corn okra silver beet celery quandong. Plantain salad beetroot bunya nuts black-eyed pea collard greens radish water spinach gourd chicory prairie turnip avocado sierra leone bologi.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-11T12:04"><span>4/11/13</span> <span>12:04</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-screen"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>Greens radish arugula</h2>
+                                    <p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-13 05:36"><span>4/13/13</span> <span>05:36</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-mail"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>Sprout garlic kohlrabi</h2>
+                                    <p>Parsnip lotus root celery yarrow seakale tomato collard greens tigernut epazote ricebean melon tomatillo soybean chicory broccoli beet greens peanut salad. Lotus root burdock bell pepper chickweed shallot groundnut pea sprouts welsh onion wattle seed pea salsify turnip scallion peanut arugula bamboo shoot onion swiss chard. Avocado tomato peanut soko amaranth grape fennel chickweed mung bean soybean endive squash beet greens carrot chicory green bean. Tigernut dandelion sea lettuce garlic daikon courgette celery maize parsley komatsuna black-eyed pea bell pepper aubergine cauliflower zucchini. Quandong pea chickweed tomatillo quandong cauliflower spinach water spinach.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-15 13:15"><span>4/15/13</span> <span>13:15</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>Watercress ricebean</h2>
+                                    <p>Peanut gourd nori welsh onion rock melon mustard jícama. Desert raisin amaranth kombu aubergine kale seakale brussels sprout pea. Black-eyed pea celtuce bamboo shoot salad kohlrabi leek squash prairie turnip catsear rock melon chard taro broccoli turnip greens. Fennel quandong potato watercress ricebean swiss chard garbanzo. Endive daikon brussels sprout lotus root silver beet epazote melon shallot.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-16 21:30"><span>4/16/13</span> <span>21:30</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-earth"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>Courgette daikon</h2>
+                                    <p>Parsley amaranth tigernut silver beet maize fennel spinach. Ricebean black-eyed pea maize scallion green bean spinach cabbage jícama bell pepper carrot onion corn plantain garbanzo. Sierra leone bologi komatsuna celery peanut swiss chard silver beet squash dandelion maize chicory burdock tatsoi dulse radish wakame beetroot.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-17 12:11"><span>4/17/13</span> <span>12:11</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-screen"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>Greens radish arugula</h2>
+                                    <p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-18 09:56"><span>4/18/13</span> <span>09:56</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>Sprout garlic kohlrabi</h2>
+                                    <p>Parsnip lotus root celery yarrow seakale tomato collard greens tigernut epazote ricebean melon tomatillo soybean chicory broccoli beet greens peanut salad. Lotus root burdock bell pepper chickweed shallot groundnut pea sprouts welsh onion wattle seed pea salsify turnip scallion peanut arugula bamboo shoot onion swiss chard. Avocado tomato peanut soko amaranth grape fennel chickweed mung bean soybean endive squash beet greens carrot chicory green bean. Tigernut dandelion sea lettuce garlic daikon courgette celery maize parsley komatsuna black-eyed pea bell pepper aubergine cauliflower zucchini. Quandong pea chickweed tomatillo quandong cauliflower spinach water spinach.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div><!-- /row --> 
                 
               </div><!-- /col-lg-9 END SECTION MIDDLE -->
@@ -181,15 +158,6 @@
               <div class="col-lg-3 ds">
                     {% block content %}
                     {% endblock %}
-                    <div class="col-md-12 mb">
-                        <!-- REVENUE PANEL -->
-                        <div class="darkblue-panel pn">
-                            <div class="darkblue-header">
-                                <h5>PROGRESS</h5>
-                            </div>
-                            
-                        </div>
-                    </div><!-- /col-md-4 -->
 
                    
 
@@ -233,6 +201,8 @@
 <!--script for this page-->
 <script src="{% static 'tentacle/js/sparkline-chart.js' %}"></script>    
 <script src="{% static 'tentacle/js/zabuto_calendar.js' %}"></script>    
+
+<script src="{% static 'tentacle/VerticalTimeline/js/modernizr.custom.js' %}"></script>  
 
 <script type="application/javascript">
     $(document).ready(function () {
