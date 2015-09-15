@@ -61,20 +61,7 @@
 </div><!-- /col-md-4 -->
 {% endblock %}
 
-<font size="40">{{ activity.total_hour }} hours</font>
-<p><small>You started {{ activity.activity_name }} in {{ activity.created_at}}.</small></p>
-
-{% with inc_status="added" dec_status="sub"%}
-{% if activity.latest_hour > 0 %}
-	<p><small>Recently, you {{ inc_status }} {{activity.latest_hour}} hours in {{ activity.updated_at}}.</small></p>
-{% else %}
-	<p><small>Recently, you {{ dec_status }} {% widthratio activity.latest_hour 1 -1 %} hours in {{ activity.updated_at}}.</small></p>
-{% endif %}
-{% endwith %}
-
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
+{% block add-hour %}
 {% if increase_hour_form.errors %}
     {{ increase_hour_form.errors|pluralize }}
 {% endif %}
@@ -101,3 +88,4 @@
         <input type="submit" name="inc_hour_btn" value="Submit" class="btn btn-default" />
     </div>
 </form>
+{% endblock %}

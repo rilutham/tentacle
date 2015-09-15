@@ -31,14 +31,18 @@ def detail(request, activity_id):
                 choice = increase_hour_form.cleaned_data['choice_field']
                 if choice == 'pos':
                     num = int(increase_hour_form.cleaned_data['num'])
+                    inc_status = "added"
                 elif choice == 'neg':
                     num = -int(increase_hour_form.cleaned_data['num'])
+                    inc_status = "sub"
                 activity.latest_hour = num
                 activity.update_total_hour()
                 activity.save()
                 note = increase_hour_form.cleaned_data['note']
-                n = Note(note=note, activity_id=activity_id)
-                n.save()
+                if note:
+                    status = "%s %d hour in %s" % (inc_status, int(increase_hour_form.cleaned_data['num']), activity.activity_name)
+                    n = Note(note=note, status=status ,activity_id=activity_id)
+                    n.save()
                 return HttpResponseRedirect('/' + activity_id)
     else:
         add_activity_form = AddActivityForm()
