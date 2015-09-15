@@ -13,6 +13,7 @@ def index(request):
 
 def detail(request, activity_id):
     activity = get_object_or_404(Activity, pk=activity_id)
+    notes = Note.objects.filter(activity_id=activity_id)
 
     # Increase and decrease total hour form.
     if request.method == 'POST':
@@ -55,7 +56,7 @@ def detail(request, activity_id):
 
     return render(request, 'tentacle/detail.html', {'activity': activity, \
             'add_activity_form': add_activity_form, 'increase_hour_form': increase_hour_form, \
-            'top_level_activity': top_level_activity})
+            'top_level_activity': top_level_activity, 'notes': notes})
 
 def delete_activity(request, activity_id=None):
     activity = get_object_or_404(Activity, pk=activity_id)

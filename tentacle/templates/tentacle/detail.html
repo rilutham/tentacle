@@ -67,25 +67,45 @@
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
-    <div class="input-group">
-        {% for choice in increase_hour_form.choice_field.field.choices %}
-        <label class="radio-inline">
-            <input type="radio" name="choice_field" value="{{ choice.0 }}">
-            <label for="">{{choice.1}}</label>
-        </label>
-        {% endfor %}
-    </div>
-    <br>
-    <div class="input-group">
-        <input type="text" class="form-control" name="{{ increase_hour_form.num.name }}" placeholder="Number of hours">
-        <span class="input-group-addon">hour</span>
-    </div>
-    <br>
     <div class="form-group">
-        <textarea rows="3" class="form-control" name="{{ increase_hour_form.note.name }}" placeholder="Add note (optional)"></textarea>
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                {% for choice in increase_hour_form.choice_field.field.choices %}
+                  <span class="input-group-addon input-sm">
+                    <input type="radio" name="choice_field" value="{{ choice.0 }}">
+                  </span>
+                  <input type="text" class="form-control input-sm" value="{{choice.1}}" readonly>
+                {% endfor %}
+                </div><!-- /input-group -->
+                
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm" name="{{ increase_hour_form.num.name }}" placeholder="Number of hours">
+                    <div class="input-group-addon">hours</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="form-group">
-        <input type="submit" name="inc_hour_btn" value="Submit" class="btn btn-default" />
+        <textarea rows="3" class="form-control input-sm" name="{{ increase_hour_form.note.name }}" placeholder="Add note (optional)"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" name="inc_hour_btn" value="Submit" class="btn btn-primary btn-sm" />
     </div>
 </form>
 {% endblock %}
+
+{% block timeline %}
+<ul class="cbp_tmtimeline">
+{% for note in notes %}
+    <li>
+        <time class="cbp_tmtime" datetime="{{ note.created_at }}"><span>4/10/13</span> <span>18:30</span></time>
+        <div class="cbp_tmicon cbp_tmicon-phone"></div>
+        <div class="cbp_tmlabel">
+            <h2>{{ note.status }}</h2>
+            <p>{{ note.note }}</p>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+{% endblock%}
