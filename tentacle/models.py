@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 class Activity(models.Model):
     activity_name = models.CharField(max_length=100)
@@ -20,4 +19,5 @@ class Activity(models.Model):
 class Note(models.Model):
     note = models.CharField(max_length=140)
     created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=100)
     activity = models.ForeignKey(Activity)
