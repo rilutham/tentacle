@@ -48,9 +48,9 @@
         <br>in {{ activity.updated_at}}</p>
         {% endif %}
         {% endwith %}
-        <div class="percent">{% widthratio activity.total_hour 10000 1 %}%</div>
+        <div class="percent">{% widthratio activity.total_hour 10000 100 %}%</div>
         <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{ activity.total_hour }}" aria-valuemin="0" aria-valuemax="10000" style="width: {% widthratio activity.total_hour 10000 100 %}%">
             <span>{{ activity.total_hour }} of 10000</span>
             </div>
         </div>
