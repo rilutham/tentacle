@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .models import Activity, Note
-from .forms import AddActivityForm, IncreaseHourForm
+from .forms import AddActivityForm, EditActivityForm, IncreaseHourForm
 from django.utils import timezone
 
 def index(request):
@@ -26,6 +26,13 @@ def detail(request, activity_id):
                 a = Activity(activity_name=name, description=description, parent_activity=parent)
                 a.save()
                 return HttpResponseRedirect('/')
+        if 'edit_act_btn' in request.POST:
+            edit_activity_form = EditActivityForm(request.POST)
+            if edit_activity_form.is_valid():
+                activity.activity_name = edit_activity_form.cleaned_data['name']
+                activity.description = edit_activity_form.cleaned_data['description']
+                activity.save()
+                return HttpResponseRedirect('/' + activity_id)
         elif 'inc_hour_btn' in request.POST:
             increase_hour_form = IncreaseHourForm(request.POST)
             if increase_hour_form.is_valid():
@@ -41,12 +48,13 @@ def detail(request, activity_id):
                 activity.save()
                 note = increase_hour_form.cleaned_data['note']
                 if note:
-                    status = "%s %d hour in %s" % (inc_status, int(increase_hour_form.cleaned_data['num']), activity.activity_name)
+                    status = "%s %d hour to %s" % (inc_status, int(increase_hour_form.cleaned_data['num']), activity.activity_name)
                     n = Note(note=note, status=status ,activity_id=activity_id)
                     n.save()
                 return HttpResponseRedirect('/' + activity_id)
     else:
         add_activity_form = AddActivityForm()
+        edit_activity_form = EditActivityForm()
         increase_hour_form = IncreaseHourForm()
 
 
@@ -55,7 +63,8 @@ def detail(request, activity_id):
     top_level_activity = activity_list.exclude(id=0)
 
     return render(request, 'tentacle/detail.html', {'activity': activity, \
-            'add_activity_form': add_activity_form, 'increase_hour_form': increase_hour_form, \
+            'add_activity_form': add_activity_form, 'edit_activity_form': edit_activity_form,\
+            'increase_hour_form': increase_hour_form, \
             'top_level_activity': top_level_activity, 'notes': notes})
 
 def delete_activity(request, activity_id=None):
